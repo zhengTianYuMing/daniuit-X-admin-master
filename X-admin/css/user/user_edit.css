@@ -1,0 +1,82 @@
+*{
+    margin: 0px auto;
+    padding: 0px;
+}
+.container{
+    width: 100%;
+}
+.container .header{
+    width: 80%;
+    margin-top: 15px;
+    display: flex;
+    margin-left: 50px;
+}
+.header div:first-child{
+    font-size: 25px;
+    font-weight: 200;
+    color: #3F3F3F;
+    margin-left: 20px;
+    flex: 2;
+}
+.header div:last-child{
+    flex: 2;
+    text-align: right;
+    text-decoration: underline;
+    margin-right: 50px;
+    color: #333333;
+}
+.content{
+    margin-left: 50px;
+    width: 80%;
+    background-color: #ffffff!important;
+    margin-top: 20px;
+    display: flex;
+}
+.content ul{
+    flex: 7;
+    border-right: 1px solid;
+}
+.content div{
+    flex: 4;
+}
+.content ul li{
+    background-color: #f1f1f1;
+    display: flex;
+    margin: 3px 0px;
+    padding: 3px;
+    height: 30px;
+    line-height: 30px;
+}
+.content ul li>div:first-child{
+    flex: 1;
+    text-align: center;
+    color: #3F3F3F;
+}
+.content ul li>div:last-child{
+    flex: 3;
+    padding: 0px 0px 0px 5px;
+
+}
+
+@font-face {
+    font-family: 'iconfont';
+    src: url('../../font/iconfont.eot');
+    src: url('../../font/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../../font/iconfont.woff') format('woff'),
+    url('../../font/iconfont.ttf') format('truetype'),
+    url('../../font/iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:18px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.content .z_ct {
+    flex: 3;
+    padding: 50px 0px 0px 50px;
+}
+.content .z_ct2{
+    margin-top: 20px;
+}

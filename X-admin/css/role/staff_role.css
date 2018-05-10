@@ -1,0 +1,70 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.container1{
+    display: flex;
+    color: #666666;
+}
+.container1 .left{
+    flex: 2;
+    padding: 20px;
+}
+.container1 .content{
+    flex: 1;
+}
+.container1 .right{
+    flex: 2;
+    margin: 20px;
+
+}
+.container1 .right .menu{
+    display: none;
+}
+.container1 .left .role th{
+    text-align: center!important;
+}
+.container1 .left .role tr td{
+    text-align: center!important;
+}
+.right-nav{
+    margin-top: 50px;
+    left: 0;
+    z-index: 2;
+    background-color: white;
+    width: 400px;
+    max-width: 400px;
+    overflow: auto;
+    overflow-x:hidden;
+    border: 1px solid #e5e5e5;
+}
+#nav .li1{
+    background-color: #cdcdcd;
+}
+.asd{
+    width: 400px!important;
+}
+.right>h3{
+    margin-top: 20px;
+}
+.right_mk{
+    width: 400px;
+    display: flex;
+    text-align: center;
+}
+.right_mk>div{
+    border: 1px solid #e5e5e5;
+}
+.roleZuo{
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+.update2{
+    margin:10px 0px 10px 20px;
+}
+.roleZuo{
+    margin: 10px 0px 0px 20px;
+    width: 100px;
+    height: 30px;
+}

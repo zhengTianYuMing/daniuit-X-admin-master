@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑员工</title>
+    <script rel="script" src="js/bootstrap/jquery-1.11.2.min.js"></script>
+    <script rel="script" src="js/bootstrap/jquery.cookie.js"></script>
+    <script rel="script" src="js/bootstrap/bootstrap.min.js"></script>
+    <script rel="script" src="js/bootstrap/doT.min.js"></script>
+    <script type="text/javascript" src="lib/layui/layui.all.js" ></script>
+    <script rel="script" src="js/role/staff_edit.js"></script>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/role/staff_edit.css">
+</head>
+<body>
+<div class="contain">
+    <form class="layui-form">
+        <div class="title">编辑员工信息</div>
+        <div class="form-content form-group">
+            <label>姓名</label>
+            <input type="text" class="form-control" style="width: 60%;display: inline-block" id="staffName">
+        </div>
+        <div class="form-content form-group">
+            <label>工资</label>
+            <input type="text" class="form-control" style="width: 60%;display: inline-block" id="wages"
+                   placeholder="Email">
+        </div>
+        <div class="form-content form-group">
+            <label>联系方式</label>
+            <input type="text" class="form-control" style="width: 60%;display: inline-block" id="contact"
+                   placeholder="Email">
+        </div>
+        <div class="form-content form-group">
+            <label>角色</label>
+            <input type="text" list="itemlist" style="width: 60%;display: inline-block"
+                   class="form-control" id="role">
+            <datalist id="itemlist">
+
+            </datalist>
+        </div>
+        <div class="form-content form-group">
+           <button type="button" class="update btn btn-success">修改</button>
+            <button type="button" class="qu btn btn-success">关闭</button>
+        </div>
+    </form>
+</div>
+
+<script rel="script" type="text/x-dot-template" id="role_temp">
+    {{ for(var i in it){}}
+    <option value="{{=it[i].roleName}}"></option>
+
+    {{  } }}
+</script>
+</body>
+</html>

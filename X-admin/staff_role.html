@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script rel="script" src="js/bootstrap/jquery-1.11.2.min.js"></script>
+    <script rel="script" src="js/bootstrap/jquery.cookie.js"></script>
+    <script rel="script" src="lib/layui/layui.js" charset="utf-8"></script>
+    <script rel="script" src="js/bootstrap/xadmin.js"></script>
+    <script rel="script" src="js/bootstrap/doT.min.js"></script>
+    <script rel="script" src="js/role/staff_role.js"></script>
+    <link rel="stylesheet" href="css/bootstrap/xadmin.css">
+    <link rel="stylesheet" href="lib/layui/css/layui.css">
+    <link rel="stylesheet" href="css/role/staff_role.css">
+</head>
+<body>
+
+<div class="container1">
+    <div class="left">
+        <table class="role layui-table">
+            <thead>
+            <tr>
+                <th>角色</th>
+                <th>操作</th>
+            </tr>
+            <tbody id="tableBody">
+            </tbody>
+            </thead>
+
+        </table>
+    </div>
+    <div class="content"></div>
+    <div class="right">
+        <div class="right_mk">
+            <div style="background-color: #cdcdcd; width: 400px;height: 30px;font-size: 20px">菜单管理</div>
+        </div>
+        <div class="layui-layout-body">
+            <table class="menu layui-table">
+                <tr>
+                    <th >修改权限</th>
+                </tr>
+                <thead>
+
+                <tbody id="body">
+                <div class="layui-side asd">
+                    <div class="right-nav">
+                    <div id="side-nav">
+                        <ul id="nav">
+                        </ul>
+
+                    </div>
+                    </div>
+                </div>
+                </tbody>
+                </thead>
+
+
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<script id="role-temp" type="text/x-dot-template">
+    {{for(var i in it){  }}
+    <tr class="tr{{=it[i].id}}">
+        <td class="{{=it[i].id}}">{{=it[i].roleName}}</td>
+        <td>
+            <span style="display: none">{{=it[i].id}}</span>
+            <a class="update" title="编辑" href="javascript:;">
+                <i class="layui-icon">&#xe642;</i>
+            </a>
+            <a class="del" title="删除" href="javascript:;">
+                <i class="layui-icon">&#xe640;</i>
+            </a>
+        </td>
+    </tr>
+    {{ } }}
+    <tr class="insert">
+        <th colspan="2">
+            <center>添加角色</center>
+        </th>
+    </tr>
+</script>
+<script id="menu" type="text/x-dot-template">
+
+    {{for(var i in it){}}
+
+    {{?it[i].parentMenu==0}}
+    <li>
+        <a class="li1">
+            <cite>{{=it[i].menuName}}</cite>
+        </a>
+        <dl class="sub-menu">
+            {{for(var j in it){}}
+            {{? it[i].menuCode== it[j].parentMenu && it[j].jurId==4}}
+            <dd>
+                <a>
+                    <cite>{{=it[j].menuName}}</cite>
+                </a>
+                <ol class="sub-menu1">
+                    {{for(var k in it){}}
+                    {{? it[k].menuId== it[j].menuId && it[k].jurId==1}}
+                    <li>
+                        <a>
+                            <cite>{{=it[k].jurisdictionName}}</cite>
+                        </a>
+                    </li>
+
+                    {{??it[k].menuId== it[j].menuId && it[k].jurId==2}}
+                    <li>
+                        <a>
+                            <cite>{{=it[k].jurisdictionName}}</cite>
+                        </a>
+                    </li>
+                    {{??it[k].menuId== it[j].menuId && it[k].jurId==3}}
+                    <li>
+                        <a>
+                            <cite>{{=it[k].jurisdictionName}}</cite>
+                        </a>
+                    </li>
+                    {{?}}
+                    {{ } }}
+                </ol>
+            </dd>
+
+            {{?}}
+            {{ } }}
+        </dl>
+    </li>
+    {{?}}
+    {{ } }}
+    <h4 class="roleZuo">操作权限</h4>
+</script>
+<script id="menu1" type="text/x-dot-template">
+
+    {{for(var i in it){}}
+
+    {{?it[i].parentMenu==0}}
+    <li>
+        <a class="li1">
+            <cite>
+                <input type="checkbox" class="role" name="{{=it[i].menuId}}{{=it[i].jurId}}">
+                {{=it[i].menuName}}
+                <div class="menuId" style="display: none">{{=it[i].menuId}}</div>
+                <div class="jurId" style="display: none">{{=it[i].jurId}}</div>
+            </cite>
+        </a>
+        <dl class="sub-menu">
+            {{for(var j in it){}}
+            {{? it[i].menuCode== it[j].parentMenu && it[j].jurId==4}}
+            <dd>
+                <a>
+                    <cite>
+                        <input type="checkbox" class="menuqw" name="{{=it[j].menuId}}{{=it[j].jurId}}">
+                        {{=it[j].menuName}}
+                        <div class="menuId" style="display: none">{{=it[j].menuId}}</div>
+                        <div class="jurId" style="display: none">{{=it[j].jurId}}</div>
+                    </cite>
+                </a>
+                <ol class="sub-menu1">
+                    {{for(var k in it){}}
+                    {{? it[k].menuId== it[j].menuId && it[k].jurId==1}}
+                    <li>
+                        <a>
+                            <cite><input type="checkbox" class="jur" name="{{=it[k].menuId}}{{=it[k].jurId}}">
+                                {{=it[k].jurisdictionName}}
+                                <div class="menuId" style="display: none">{{=it[k].menuId}}</div>
+                                <div class="jurId" style="display: none">{{=it[k].jurId}}</div>
+                            </cite>
+                        </a>
+                    </li>
+
+                    {{??it[k].menuId== it[j].menuId && it[k].jurId==2}}
+                    <li>
+                        <a>
+                            <cite><input type="checkbox" class="jur" name="{{=it[k].menuId}}{{=it[k].jurId}}">
+                                {{=it[k].jurisdictionName}}
+                                <div class="menuId" style="display: none">{{=it[k].menuId}}</div>
+                                <div class="jurId" style="display: none">{{=it[k].jurId}}</div>
+                            </cite>
+                        </a>
+                    </li>
+                    {{??it[k].menuId== it[j].menuId && it[k].jurId==3}}
+                    <li>
+                        <a>
+                            <cite>
+                                <input type="checkbox" class="jur" name="{{=it[k].menuId}}{{=it[k].jurId}}">
+                                {{=it[k].jurisdictionName}}
+                                <div class="menuId" style="display: none">{{=it[k].menuId}}</div>
+                                <div class="jurId" style="display: none">{{=it[k].jurId}}</div>
+                            </cite>
+                        </a>
+                    </li>
+                    {{?}}
+                    {{ } }}
+                </ol>
+            </dd>
+            {{?}}
+            {{ } }}
+        </dl>
+    </li>
+    {{?}}
+    {{ } }}
+    <button class="update2 layui-btn layui-btn-normal">修改</button>
+    <button class="tui layui-btn layui-btn-warm">退出</button>
+</script>
+</body>
+</html>

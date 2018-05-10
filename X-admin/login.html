@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小狗之家后台管理系统</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/bootstrap/font.css">
+	<link rel="stylesheet" href="css/bootstrap/xadmin.css">
+    <script type="text/javascript" src="js/bootstrap/jquery-1.11.2.min.js"></script>
+    <script src="lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/bootstrap/xadmin.js"></script>
+    <script rel="script" src="js/bootstrap/jquery.cookie.js"></script>
+    <script rel="script" src="js/index/login.js"></script>
+</head>
+<body class="login-bg">
+    
+    <div class="login">
+        <div class="message">宠物管理登录</div>
+        <div id="darkbannerwrap"></div>
+        <form method="post" class="layui-form" >
+
+            <input name="phone" placeholder="账号"  type="text" lay-verify="required" class="layui-input" >
+            <hr class="hr15">
+            <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+            <hr class="hr15">
+            <input value="登录" id="login" lay-submit lay-filter="login" style="width:100%;" type="button">
+            <hr class="hr20" >
+            <div style="padding:0 0 0 30px;text-align: left;color: red;" id="showMsg">&nbsp;</div>
+        </form>
+    </div>
+
+    <script>
+    </script>
+    <!-- 底部结束 -->
+</body>
+</html>

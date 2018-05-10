@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <script rel="script" src="js/bootstrap/jquery-1.11.2.min.js"></script>
+    <script rel="script" src="js/bootstrap/jquery.cookie.js"></script>
+    <script rel="script" src="js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/layui/layui.all.js" ></script>
+    <script rel="script" src="js/bootstrap/doT.min.js"></script>
+    <script rel="script" src="js/role/staff_insert.js"></script>
+    <link rel="stylesheet" href="css/role/staff_edit.css">
+
+</head>
+<body>
+<form class="layui-form">
+    <div class="title">编辑员工信息</div>
+    <div class="form-content form-group">
+        <label>姓名</label>
+        <input type="text" class="form-control"
+               style="width: 60%;display: inline-block" id="staffName" placeholder="请填写入职员工姓名">
+    </div>
+    <div class="form-content form-group">
+        <label>员工账号:</label>
+        <input type="text" class="form-control" style="width: 60%;display: inline-block"
+               placeholder="请填写员工登录账号" id="phone">
+    </div>
+    <div class="form-content form-group">
+        <label>员工密码:</label>
+        <input type="text" class="form-control" style="width: 60%;display: inline-block" id="password"
+               placeholder="请输入员工登录密码">
+    </div>
+    <div class="form-content form-group">
+        <label>性别:</label>
+        <div class="form-control" style="width: 60%;display: inline-block">
+        <input type="radio" name="identity"  checked="checked" value="男">男
+            <input name="identity" style="margin-left: 50px" type="radio" value="女">女
+        </div>
+    </div>
+    <div class="form-content form-group">
+        <label>工资:</label>
+        <input type="text" class="form-control" style="width: 60%;display: inline-block" id="wages"
+               placeholder="请输入员工工资">
+    </div>
+    <div class="form-content form-group">
+        <label>身份证号:</label>
+        <input type="text" class="form-control" style="width: 60%;display: inline-block" id="idCord"
+               placeholder="请输入员工身份证号">
+    </div>
+    <div class="form-content form-group">
+        <label>联系方式:</label>
+        <input type="text" class="form-control" style="width: 60%;display: inline-block" id="contact"
+               placeholder="请输入员工联系方式：手机号">
+    </div>
+    <div class="form-content form-group">
+        <label>角色:</label>
+        <select style="width: 60%;display: inline-block"
+                class="form-control" id="role">
+        </select>
+
+    </div>
+    <div class="form-content form-group">
+        <button type="button" class="insert btn btn-success">添加</button>
+        <button type="button" class="qu btn btn-success">关闭</button>
+    </div>
+</form>
+
+<script rel="script" type="text/x-dot-template" id="role_temp">
+    <option>请选择</option>
+    {{ for(var i in it){ }}
+    <option value="{{=it[i].id}}">{{=it[i].roleName}}</option>
+    {{  } }}
+
+</script>
+</body>
+</html>

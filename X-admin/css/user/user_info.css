@@ -1,0 +1,27 @@
+.layui-select-title{
+    display: inline-block;
+}
+.x-body .layui-row{
+    width: 100%;
+    text-align: center;
+}
+.x-body .layui-row .layui-form-item{
+    width: 60%;
+    text-align: center;
+}
+.layui-btn-container{
+    text-align: center;
+}
+.page{
+    text-align: center;
+    margin-top: 0px !important;
+}
+.z_nav{
+width: 100%;
+}
+.z_nav ul{
+    text-align: center;
+}
+#tableBody tr:nth-of-type(2n-1){
+    background-color: #cdcdcd;
+}
