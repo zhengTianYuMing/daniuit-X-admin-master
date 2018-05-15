@@ -109,7 +109,6 @@ $(function () {
                 $(".sub-menu li").click(function () {
                     var menuName=$(this).find("cite").text();
                     $.cookie("menuName",menuName,{expires:7});
-
                 })
 
             }

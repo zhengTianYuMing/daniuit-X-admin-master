@@ -177,6 +177,7 @@ $(function () {
             }
         })
     }
+
     //获取权限可操作的表
     function roleMenu(id) {
         $.ajax({
@@ -240,19 +241,20 @@ $(function () {
                     event.stopPropagation();
                 })
                 $(".roleZuo").click(function () {
-                    var id1 =1;
-                    if(id==1){
+                    var id1 = 1;
+                    if (id == 1) {
                         layer.alert("改员工为管理员，权限不能修改");
                         return;
-                    }else {
+                    } else {
                         roleZuo(id1, id);
                     }
                 })
             }
         })
     }
+
     //权限操作
-    function roleZuo(id1,id) {
+    function roleZuo(id1, id) {
         $.ajax({
             url: "http://localhost:8080/menuJuisd/getByRole",
             method: "post",
@@ -306,12 +308,12 @@ $(function () {
                     contentType: "application/json",
                     data: JSON.stringify({id: id}),
                     success: function (data1) {
-                        for (var i =0;i<data.length;i++){
-                            for (var j =0;j<data1.length;j++){
-                                if(data1[j].menuId==data[i].menuId && data1[j].jurId==data[i].jurId){
+                        for (var i = 0; i < data.length; i++) {
+                            for (var j = 0; j < data1.length; j++) {
+                                if (data1[j].menuId == data[i].menuId && data1[j].jurId == data[i].jurId) {
 
-                                   $("input[name="+data1[j].menuId+data1[j].jurId+"]").prop("checked", true)
-                                }else{
+                                    $("input[name=" + data1[j].menuId + data1[j].jurId + "]").prop("checked", true)
+                                } else {
 
                                 }
                             }
@@ -319,34 +321,29 @@ $(function () {
 
                         //子集菜单选中父级也选中
                         $(".jur").click(function () {
-                            if($('.jur').is(':checked')) {
-                                $(this).parents("dd").find(".menuqw").attr("checked",true);
+                            if ($('.jur').is(':checked')) {
+                                $(this).parents("dd").find(".menuqw").attr("checked", true);
                             }
-                            if($('.menuqw').is(':checked')) {
-                                $(this).parents("li").find(".role").attr("checked",true);
+                            if ($('.menuqw').is(':checked')) {
+                                $(this).parents("li").find(".role").attr("checked", true);
                             }
                         })
                         $(".menuqw").click(function () {
-                            if($('.menuqw').is(':checked')) {
-                                $(this).parents("li").find(".role").attr("checked",true);
+                            if ($('.menuqw').is(':checked')) {
+                                $(this).parents("li").find(".role").attr("checked", true);
                             }
                         })
                         $(".update2").click(function () {
                             delStaffJm(id);
-                            $('input[type=checkbox]:checked').each(function()
-                            {
-                                var menuId=$(this).parent().find(".menuId").text();
-                                var jurId=$(this).parent().find(".jurId").text();
-                                if(menuId!=null&&jurId!=null){
 
-                                    insertStaffJm(id,menuId,jurId)
-                                }
+                            $('input[type=checkbox]:checked').each(function () {
+                                var menuId = $(this).parent().find(".menuId").text();
+                                var jurId = $(this).parent().find(".jurId").text();
+                                insertStaffJm(id, menuId, jurId);
                             });
-                            if(fun){
-                                layer.alert("修改成功")
-                                roleMenu(id)
-                            }
+                            layer.alert("修改成功")
                         })
+
                         $(".tui").click(function () {
                             roleMenu(id)
                         })
@@ -355,33 +352,35 @@ $(function () {
             }
         })
     }
+ var isf= true;
     //删除角色操作权限
     function delStaffJm(id) {
         $.ajax({
-            url:"http://localhost:8080/staffJm/delStaffJm",
-            method:"post",
-            contentType:"application/json",
-            dataType:"json",
-            data:JSON.stringify({roleId:id}),
-            success:function (data) {
-                if(data.code==200){
+            url: "http://localhost:8080/staffJm/delStaffJm",
+            method: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({roleId: id}),
+            success: function (data) {
+                if (data.code == 200) {
 
                 }
             }
         })
     }
-    var fun= false;
+
+    var fun = false;
+
     //添加角色操作权限
-    function insertStaffJm(id,menuId,jurId) {
+    function insertStaffJm(id, menuId, jurId) {
         $.ajax({
-            url:"http://localhost:8080/staffJm/insertStaffJm",
-            method:"post",
-            contentType:"application/json",
-            dataType:"json",
-            data:JSON.stringify({roleId:id,menuId:menuId,jurId:jurId}),
-            success:function (data) {
-                if(data.code==200){
-                    fun=true;
+            url: "http://localhost:8080/staffJm/insertStaffJm",
+            method: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({roleId: id, menuId: menuId, jurId: jurId}),
+            success: function (data) {
+                if (data.code == 200) {
                 }
             }
         })

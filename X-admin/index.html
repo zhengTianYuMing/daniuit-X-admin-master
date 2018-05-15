@@ -71,15 +71,15 @@
 <!--左侧1级菜单-->
 <script id="menu-temp" type="text/x-dot-template">
     {{   for(var i in it){   }}
-
+    {{? it[i].parentMenu==0}}
     <li>
-        {{? it[i].parentMenu==0}}
+
         <a>
             <i class="iconfont">{{=it[i].menuIcon}}</i>
             <cite>{{=it[i].menuName}}</cite>
             <i class="iconfont nav_right">&#xe697;</i>
         </a>
-        {{?}}
+
         <ul class="sub-menu">
             {{for(var j in it){}}
             {{? it[i].menuCode== it[j].parentMenu}}
@@ -92,7 +92,9 @@
             {{?}}
             {{ } }}
         </ul>
+
     </li>
+    {{?}}
     {{ } }}
 </script>
 

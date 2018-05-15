@@ -36,7 +36,7 @@
     </div>
     <div></div>
 </div>
-<script type="text/x-dto-template" id="content">
+<script type="text/x-dot-template" id="content">
     <li>
         <div>性别:</div>
         {{?it.userSex==1}}
@@ -59,12 +59,22 @@
     </li>
 
     <li>
-        <div>身份证:</div>
-        <div>{{=it.occupation}}</div>
-    </li>
-    <li>
         <div>支付宝:</div>
         <div>{{=it.alipay}}</div>
+    </li>
+    <li>
+        <div>实名认证:</div>
+        {{?it.occupationId==1}}
+        <div><i class="layui-icon" style="color: #1E9FFF">未认证</i></div>
+        {{??it.occupationId==2}}
+        <div><i class="layui-icon" style="color: red;">认证开始</i></div>
+        {{??it.occupationId==3}}
+        <div><i class="layui-icon" style="color: red;">认证中</i></div>
+        {{??it.occupationId==4}}
+        <div><i class="layui-icon" style="color: red;">认证完成</i></div>
+        {{??it.occupationId==5}}
+        <div><i class="layui-icon" style="color: red;">{{=it.relName}}</i></div>
+        {{?}}
     </li>
     <li>
         <div>家庭住址:</div>

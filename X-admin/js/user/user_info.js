@@ -239,7 +239,7 @@ $(function () {
             data: param,
             success: function (data) {
                 if (data.code == 200) {
-                    alert(data.msg);
+                    layer.alert(data.msg);
                 }
             }
         })
