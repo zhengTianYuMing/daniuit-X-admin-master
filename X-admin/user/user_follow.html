@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/user/user_info.css">
+    <link rel="stylesheet" href="../css/bootstrap/font.css">
+    <link rel="stylesheet" href="../css/bootstrap/xadmin.css">
+    <script type="text/javascript" src="../js/bootstrap/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/bootstrap/xadmin.js"></script>
+    <script rel="script" src="../js/bootstrap/bootstrap.min.js"></script>
+    <script rel="script" src="../js/bootstrap/bootstrap-paginator.js"></script>
+    <script rel="script" src="../js/bootstrap/doT.min.js"></script>
+    <script rel="script" src="../js/bootstrap/jquery.cookie.js"></script>
+    <script rel="script" src="../js/user/user_follow.js"></script>
+    <script rel="script" src="../js/bootstrap/jqPaginator.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="../js/bootstrap/html5.min.js"></script>
+    <script src="../js/bootstrap/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="index.html">首页</a>
+        <a href="">演示</a>
+        <a>
+          <cite>导航元素</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12">
+            <div class="layui-form-item">
+
+
+                <div class="layui-inline">
+                    <input class="layui-input "  placeholder="请输用户账号" name="end" id="end">
+                </div>
+                <div class="layui-inline">
+                    <span class="layui-btn sou"><i class="layui-icon">&#xe615;</i></span>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <xblock>
+        <span class="x-right" style="line-height:40px">共有用户数据：<span class="z_num"></span> 条</span>
+    </xblock>
+    <!--显示所有用户-->
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>用户姓名</th>
+            <th>用户粉丝</th>
+            <th>创建时间</th>
+        </thead>
+        <tbody id="tableBody">
+
+        </tbody>
+        <div id="bottomTab">
+
+        </div>
+        <div class="z_nav navbar navbar-fixed-bottom">
+            <ul class="list-inline" className="pagination" id="pagination1">
+            </ul>
+        </div>
+
+    </table>
+    <!--底部页面-->
+
+</div>
+</body>
+</html>
