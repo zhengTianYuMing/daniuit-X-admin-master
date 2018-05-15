@@ -34,8 +34,7 @@ $(function () {
             'pageIndex': pageNumber,
             'pageSize': pageSize
         });//请求数据
-        var param = JSON.stringify({
-            'userName': userName});
+        var param = JSON.stringify({'userName': userName});
         count(param)
         $(function () {
             $.ajax({
