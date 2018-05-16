@@ -218,9 +218,7 @@ $(function () {
             }
         })
     }
-
     var isf = false;
-
     /**
      * 更改用户状态
      * @param id

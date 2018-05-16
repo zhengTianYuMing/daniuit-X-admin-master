@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+    <script rel="script" src="../js/bootstrap/jquery-1.11.2.min.js"></script>
+    <script rel="script" src="../js/bootstrap/jquery.cookie.js"></script>
+    <script rel="script" src="../js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../lib/layui/layui.all.js"></script>
+    <script rel="script" src="../js/bootstrap/doT.min.js"></script>
+    <script rel="script" src="../js/role/staff_editRole.js"></script>
+    <link rel="stylesheet" href="../css/role/staff_role_insert.css">
+</head>
+<body>
+<form class="layui-form">
+
+    <div class="form-content form-group" style="vertical-align:middle">
+        <label style="display: block">认证失败原因：</label>
+        <textarea class="form-control"
+                  style="display: inline-block" id="roleName" name="txt" clos="50" rows="5"></textarea>
+    </div>
+    <div class="form-content form-group" style="text-align: center;margin-top: 50px">
+        <button type="button" style="margin-right: 50px" class="tijiao btn btn-success">提交</button>
+        <button type="button" class="qu btn btn-success">关闭</button>
+    </div>
+</form>
+<script rel="script">
+    $(function () {
+        var userId = $.cookie("User_userId");
+
+        $(".tijiao").click(function () {
+            var examineReason = $("#roleName").val();
+            var param = JSON.stringify({userId: userId, examineReason: examineReason});
+            $.ajax({
+                url:"http://localhost:8080/userExamine/insertExamine",
+                method: "post",
+                contentType:"application/json",
+                dataType: "json",
+                data: param,
+                success: function (data) {
+                    if (data.code == 200) {
+                        layer.alert(data.msg);
+                        setTimeout(function () {
+                            parent.layer.closeAll()
+                        }, 1500);
+                    }
+                }
+        })
+    })
+    })
+</script>
+</body>
+</html>
