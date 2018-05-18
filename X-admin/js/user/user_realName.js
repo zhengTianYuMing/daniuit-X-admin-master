@@ -67,14 +67,14 @@ $(function () {
                         if (dataList.length > 0) {
                             $(dataList).each(function () {//重新生成
                                 $("#tableBody").append('<tr>');
-                                $("#tableBody").append('<td class="'+this.id+' userName" style="text-align: center">' + this.userName + '</td>');
-                                $("#tableBody").append('<td class="'+this.id+' name" style="text-align: center">' + this.name + '</td>');
-                                $("#tableBody").append('<td class="'+this.id+' idCard" style="text-align: center">' + this.idCard + '</td>');
+                                $("#tableBody").append('<td class="'+this.id+' userName '+this.id+'" style="text-align: center">' + this.userName + '</td>');
+                                $("#tableBody").append('<td class="'+this.id+'name '+this.id+'" style="text-align: center">' + this.name + '</td>');
+                                $("#tableBody").append('<td class="'+this.id+'idCard '+this.id+'" style="text-align: center">' + this.idCard + '</td>');
                                 $("#tableBody").append('<td class="'+this.id+' img" style="text-align: center">' + '<img style="width: 50px;height: 50.4px" ' +
                                     'src="http://localhost:8080/imgs/' + this.idCardImg + '">' + '</td>');
                                 $("#tableBody").append('<td id='+this.userId+' class='+this.id+' style="text-align: center">' + '<button class="success btn btn-primary" style="margin-right: 30px">通过</button>'
-                                    +'<button class="sersion btn btn-danger">未通过 </button>'+ '</td>');
-                                $("#tableBody").append('</tr>');
+                                    +'<button class="sersion btn btn-danger">未通过 </button>'+ '</td></tr>');
+                                $("#tableBody").append('');
                             });
                             $(".img").click(function () {
                                 var ii=  "<img src='" + $(this).find("img").attr("src") + "' />";
@@ -91,13 +91,15 @@ $(function () {
                             $(".success").click(function () {
                                 var id=($(this).parent().attr("class"));
                                 var userId=($(this).parent().attr("id"));
-                                var relName=($(this).parent().parent().find(".name").text());
-                                var occupation=($(this).parent().parent().find(".idCard").text());
+                                var relName=($(this).parent().parent().find("."+id+"name").text());
+                                var occupation=($(this).parent().parent().find("."+id+"idCard").text());
                                 var occupationId=3
                                 var param=JSON.stringify({id:userId,relName:relName,occupation:occupation,occupationId:occupationId});
                                 updUserD(param);
                                 delOcc(id);
-
+                                if(idf){
+                                    layer.alert("认证成功")
+                                }
                             })
                             $(".sersion").click(function () {
                                 var userId=($(this).parent().attr("id"));
@@ -114,7 +116,10 @@ $(function () {
                                     shade: 0.4,
                                     content: "user_examine.html",
                                     end: function () {
+                                        var param=JSON.stringify({id:userId,occupationId:4});
+                                        updUserD(param);
                                         delOcc(id)
+                                        count( )
                                     }
                                 });
 
@@ -145,13 +150,12 @@ $(function () {
     });
 
 
-    function count(param) {
+    function count() {
         $.ajax({
-            url: "http://localhost:8080/userFollow/count",
+            url: "http://localhost:8080/userOccupation/count",
             method: "post",
             contentType: "application/json",
             dataType: "json",
-            data: param,
             success: function (data) {
                 $(".z_num").text(data);
             }
@@ -172,6 +176,7 @@ $(function () {
         })
 
     }
+    var idf= false;
     //认证成功更改用户信息
     function updUserD(param) {
         $.ajax({
@@ -182,7 +187,7 @@ $(function () {
             data:param,
             success:function (data) {
                 if (data.code==200){
-                    layer.alert(data.msg);
+                    idf= true
                 }
             }
         })

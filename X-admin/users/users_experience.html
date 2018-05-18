@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="../lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/user/user_edit.css">
+    <script rel="script" src="../js/bootstrap/jquery-1.11.2.min.js"></script>
+    <script rel="script" src="../js/bootstrap/jquery.cookie.js"></script>
+    <script rel="script" src="../js/bootstrap/doT.min.js"></script>
+    <script rel="script" src="../js/bootstrap/bootstrap.min.js"></script>
+    <style type="text/css">
+        *{
+            margin: 0px auto;
+            padding: 0px;
+        }
+        table{
+            width: 60%;!important;
+            margin-top: 30px;
+
+
+        }
+    </style>
+</head>
+<body>
+<div class="x-body" style="width: 100%">
+
+
+    <!--显示所有用户-->
+    <table class="body12 table" style="width: 60%">
+
+        <tr>
+            <th colspan="3" style="font-size: 22px;font-weight: 100">寄养经验:</th>
+        </tr>
+        <tr class="" style="text-align: center">
+            <th style="font-size:16px;font-weight: 100;text-align: center">宠物种类</th>
+            <th style="font-size:16px;font-weight: 100;text-align: center">宠物类型</th>
+            <th style="font-size:16px;font-weight: 100;text-align: center">&nbsp;&nbsp;&nbsp;&nbsp;年数</th>
+        </tr>
+
+
+
+
+
+    </table>
+    <!--底部页面-->
+
+</div>
+<script type="text/x-dot-template" id="te">
+
+    {{for(var i in it){}}
+    <tr style="font-weight: 100">
+        <th style="font-size:16px;font-weight: 100;text-align: center">{{=it[i].type}}</th>
+        <th style="font-size:16px;font-weight: 100;text-align: center">{{=it[i].name}}</th>
+        <th style="font-size:16px;font-weight: 100;text-align: center">{{=it[i].years}}</th>
+    </tr>
+    {{ } }}
+
+
+</script>
+<script type="text/javascript">
+    $(function () {
+        var id = $.cookie("users_id");
+        $.ajax({
+            url:"http://localhost:8080/usersExperience/getAll",
+            method:"post",
+            contentType:"application/json",
+            dataType:"json",
+            data:JSON.stringify({usersId:id,isExperience:1}),
+            success:function (data) {
+                var txt = doT.template($("#te").text());
+                $(".body12").append(txt(data));
+            }
+        })
+    })
+</script>
+</body>
+</html>

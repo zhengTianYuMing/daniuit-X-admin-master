@@ -27,12 +27,12 @@
 </form>
 <script rel="script">
     $(function () {
-        var userId = $.cookie("User_userId");
+        var userId = $.cookie("User_userId1");
         $(".tijiao").click(function () {
             var examineReason = $("#roleName").val();
             var param = JSON.stringify({userId: userId, examineReason: examineReason});
             $.ajax({
-                url:"http://localhost:8080/userExamine/insertExamine",
+                url:"http://localhost:8080/usersExamine/insertExamine",
                 method: "post",
                 contentType:"application/json",
                 dataType: "json",

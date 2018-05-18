@@ -129,7 +129,7 @@ $(function () {
                                     shadeClose: true,
                                     shade: 0.4,
                                     btn:[ '关闭'],
-                                    content: "user_edit.html"
+                                    content: "user/user_edit.html"
                                 });
 
                             })
