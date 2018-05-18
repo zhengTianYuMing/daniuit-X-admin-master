@@ -41,6 +41,7 @@ $(function () {
             'pageSize': pageSize
         });//请求数据
         var param = JSON.stringify({'userPhone': userName, 'itemName': itemName})
+        count(param);
         $(function () {
             $.ajax({
                 url: "http://localhost:8080/staffUrRole/getListByParam ",
@@ -117,11 +118,14 @@ $(function () {
 
         //生成底部分页栏
         buildTable("", "", 1, 10);//默认空白查全部
+
         //创建结算规则
         $(".sou").bind("click", function () {
             var userName = $("#end").val();
             var itemName = $("#position").val();
             buildTable(userName, itemName, 1, PAGESIZE);
+            var param = JSON.stringify({'userPhone': userName, 'itemName': itemName})
+            count(param);
         });
     });
 
@@ -266,6 +270,18 @@ $(function () {
                 if (data.code == 200) {
                     layer.confirm(data.msg);
                 }
+            }
+        })
+    }
+    function count(param) {
+        $.ajax({
+            url: "http://localhost:8080/staffInfo/count",
+            method: "post",
+            contentType: "application/json",
+            dataType: "json",
+            data: param,
+            success: function (data) {
+                $(".z_num").text(data);
             }
         })
     }

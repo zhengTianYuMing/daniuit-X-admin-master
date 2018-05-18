@@ -172,7 +172,7 @@ $(function () {
      */
     function count(param) {
         $.ajax({
-            url: "http://localhost:8080/userInfo/count",
+            url: "http://localhost:8080/usersInfo/count",
             method: "post",
             contentType: "application/json",
             dataType: "json",
