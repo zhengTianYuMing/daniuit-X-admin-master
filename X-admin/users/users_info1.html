@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/user/user_info.css">
+    <link rel="stylesheet" href="../css/bootstrap/font.css">
+    <link rel="stylesheet" href="../css/bootstrap/xadmin.css">
+    <script type="text/javascript" src="../js/bootstrap/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/bootstrap/xadmin.js"></script>
+    <script type="text/javascript" src="../lib/layui/layui.all.js" ></script>
+    <script rel="script" src="../js/bootstrap/bootstrap.min.js"></script>
+    <script rel="script" src="../js/bootstrap/bootstrap-paginator.js"></script>
+    <script rel="script" src="../js/bootstrap/doT.min.js"></script>
+    <script rel="script" src="../js/bootstrap/jquery.cookie.js"></script>
+    <script rel="script" src="../js/users/users_info1.js"></script>
+
+    <script rel="script" src="../js/bootstrap/jqPaginator.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="../js/bootstrap/html5.min.js"></script>
+    <script src="../js/bootstrap/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="index.html">首页</a>
+        <a href="">演示</a>
+        <a>
+          <cite>导航元素</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <xblock>
+        <span class="x-right" style="line-height:40px">共有用户数据：<span class="z_num"></span> 条</span>
+    </xblock>
+    <!--显示所有用户-->
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>家庭名称</th>
+            <th>家庭照片</th>
+            <th>积分</th>
+            <th style="width: 20%">家庭介绍</th>
+            <th style="width: 20%">家庭描述</th>
+            <th style="width: 30%">操作</th>
+        </tr>
+        <tbody id="tableBody">
+
+        </tbody>
+        <div id="bottomTab">
+
+        </div>
+        <div class="z_nav navbar navbar-fixed-bottom">
+            <ul class="list-inline" className="pagination" id="pagination1">
+            </ul>
+        </div>
+
+    </table>
+    <!--底部页面-->
+</div>
+</body>
+</html>

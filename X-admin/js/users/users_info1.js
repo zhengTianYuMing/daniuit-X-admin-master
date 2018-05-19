@@ -55,7 +55,7 @@ $(function () {
                                 onPageChange: function (num, type) {
                                     if (type != "init") {
 
-                                        buildTable(2, num, PAGESIZE);
+                                        buildTable(3, num, PAGESIZE);
                                     }
                                 }
                             });
@@ -69,29 +69,22 @@ $(function () {
                                 $("#tableBody").append('<td class="'+this.id+'">' + this.usersFamily + '</td>');
                                 $("#tableBody").append('<td class="'+this.id+'">' + '<img style="width: 50px;height: 50.4px" ' +
                                     'src="http://localhost:8080/imgs/' + this.usersFamilyImg + '">' + '</td>');
+                                $("#tableBody").append('<td class="'+this.id+'">' + this.score + '</td>');
                                 $("#tableBody").append('<td class="'+this.id+'">' + this.usersGoods + '</td>');
                                 $("#tableBody").append('<td class="'+this.id+'">' + this.describe + '</td>');
                                 $("#tableBody").append
                                 ('<td id='+this.usersId+' class="'+this.id+'" style="text-align: center">' +
                                     '<a class="z_pr environment" style="margin-right: 10px">寄养环境</a>' +
                                     '<a class="z_pr experience" style="margin-right: 10px">寄养经验</a>' +
-                                     '</td>');
-                                $("#tableBody").append
-                                ('<td id='+this.usersId+' class='+this.id+' style="text-align: center">' +
-                                    '<button class="success btn btn-primary" style="margin-right: 30px">通过</button>'
-                                    +'<button id="'+this.userId+'" class="sersion btn btn-danger">未通过 </button>'+ '</td></tr>');
-
+                                    '<a class="z_pr provide" style="margin-right: 10px">寄养服务</a>' +
+                                    '</td>');
+                                $("#tableBody").append('</tr>');
                             });
-                            $(".z_pr").hover(function () {
-                                $(this).css("color", "red")
-                            }, function () {
-                                $(this).css("color", "#333")
-                            })
-                            //查看环境
+
                             $(".environment").click(function () {
                                 var id = $(this).parent().attr("class");
                                 $.cookie("users_id",id,{expires: 7})
-                                $.cookie("isEnvironment",1,{expires: 7})
+                                $.cookie("isEnvironment",2,{expires: 7})
                                 layer.open({
                                     type: 2,
                                     area: ['800px', '600px'],
@@ -106,7 +99,7 @@ $(function () {
                             })
                             //查看寄养经验
                             $(".experience").click(function () {
-                                $.cookie("isExperience",1,{expires: 7})
+                                $.cookie("isExperience",2,{expires: 7})
                                 var id = $(this).parent().attr("class");
                                 $.cookie("users_id",id,{expires: 7})
                                 layer.open({
@@ -121,30 +114,21 @@ $(function () {
                                     content: "users_experience.html"
                                 });
                             })
-                            //认证成功执行
-                            $(".success").click(function () {
+
+                            $(".provide").click(function () {
+                                $.cookie("isExperience",2,{expires: 7})
                                 var id = $(this).parent().attr("class");
-                                succe12(id);
-                            })
-                            //认证失败执行
-                            $(".sersion").click(function () {
-                                var userId=($(this).attr("id"));
-                                var id = $(this).parent().attr("class");
-                                alert(userId);
-                                $.cookie("User_userId1", userId, {expires: 7});
+                                $.cookie("users_id",id,{expires: 7})
                                 layer.open({
                                     type: 2,
-                                    title:"原因",
-                                    area: ['500px', '500px'],
+                                    area: ['800px', '600px'],
                                     maxmin: true,
                                     closeBtn: false,
                                     fixed: false,
                                     shadeClose: true,
                                     shade: 0.4,
-                                    content: "users_examine.html",
-                                    end: function () {
-                                        succe(id)
-                                    }
+                                    btn:[ '关闭'],
+                                    content: "users_provide.html"
                                 });
                             })
                         } else {
@@ -162,7 +146,7 @@ $(function () {
     //渲染完就执行
     $(function () {
         //生成底部分页栏
-        buildTable(2, 1, 10);//默认空白查全部
+        buildTable(3, 1, 10);//默认空白查全部
         //身份类型下拉框
         //创建结算规则
 
@@ -210,61 +194,6 @@ $(function () {
             }
         })
     }
-
     var isf = false;
-
-
-    //认证成功
-    function succe12(id) {
-        $.ajax({
-            url:"http://localhost:8080/usersInfo/updUsersInfo",
-            method:"post",
-            contentType:"application/json",
-            dataType:"json",
-            data:JSON.stringify({id:id,'isExamine': 3}),
-            success:function (data) {
-                if(data.code==200){
-                    layer.alert(data.msg);
-                    $("."+id).remove();
-                }
-            }
-        })
-        $.ajax({
-            url:"http://localhost:8080/usersEnvironment/updUsersEnvironment",
-            method:"post",
-            contentType:"application/json",
-            dataType:"json",
-            data:JSON.stringify({usersId:id,'isEnvironment': 2}),
-            success:function (data) {
-
-            }
-        })
-        $.ajax({
-            url:"http://localhost:8080/usersExperience/updUsersExperience",
-            method:"post",
-            contentType:"application/json",
-            dataType:"json",
-            data:JSON.stringify({usersId:id,'isExperience': 2}),
-            success:function (data) {
-
-            }
-        })
-    }
-
-    //认证失败
-    function succe(id) {
-        $.ajax({
-            url:"http://localhost:8080/usersInfo/updUsersInfo",
-            method:"post",
-            contentType:"application/json",
-            dataType:"json",
-            data:JSON.stringify({id:id,'isExamine': 4}),
-            success:function (data) {
-                if(data.code==200){
-                    $("."+id).remove();
-                }
-            }
-        })
-    }
 
 })

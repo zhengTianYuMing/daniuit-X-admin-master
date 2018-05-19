@@ -22,14 +22,11 @@
             width: 60%;!important;
             margin-top: 30px;
 
-
         }
     </style>
 </head>
 <body>
 <div class="x-body" style="width: 100%">
-
-
     <!--显示所有用户-->
     <table class="body12 table" style="width: 60%">
 
@@ -41,11 +38,6 @@
             <th style="font-size:16px;font-weight: 100;text-align: center">宠物类型</th>
             <th style="font-size:16px;font-weight: 100;text-align: center">&nbsp;&nbsp;&nbsp;&nbsp;年数</th>
         </tr>
-
-
-
-
-
     </table>
     <!--底部页面-->
 
@@ -65,12 +57,13 @@
 <script type="text/javascript">
     $(function () {
         var id = $.cookie("users_id");
+        var isExperience = $.cookie("isExperience");
         $.ajax({
             url:"http://localhost:8080/usersExperience/getAll",
             method:"post",
             contentType:"application/json",
             dataType:"json",
-            data:JSON.stringify({usersId:id,isExperience:1}),
+            data:JSON.stringify({usersId:id,isExperience:isExperience}),
             success:function (data) {
                 var txt = doT.template($("#te").text());
                 $(".body12").append(txt(data));
