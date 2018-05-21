@@ -55,7 +55,7 @@ $(function () {
                                 onPageChange: function (num, type) {
                                     if (type != "init") {
 
-                                        buildTable(3, num, PAGESIZE);
+                                        buildTable(2, num, PAGESIZE);
                                     }
                                 }
                             });
@@ -77,6 +77,7 @@ $(function () {
                                     '<a class="z_pr environment" style="margin-right: 10px">寄养环境</a>' +
                                     '<a class="z_pr experience" style="margin-right: 10px">寄养经验</a>' +
                                     '<a class="z_pr provide" style="margin-right: 10px">寄养服务</a>' +
+                                    '<a class="z_pr tips" style="margin-right: 10px">寄养提供</a>' +
                                     '</td>');
                                 $("#tableBody").append('</tr>');
                             });
@@ -131,6 +132,22 @@ $(function () {
                                     content: "users_provide.html"
                                 });
                             })
+                            $(".tips").click(function () {
+                                $.cookie("isExperience",2,{expires: 7})
+                                var id = $(this).parent().attr("class");
+                                $.cookie("users_id",id,{expires: 7})
+                                layer.open({
+                                    type: 2,
+                                    area: ['800px', '600px'],
+                                    maxmin: true,
+                                    closeBtn: false,
+                                    fixed: false,
+                                    shadeClose: true,
+                                    shade: 0.4,
+                                    btn:[ '关闭'],
+                                    content: "users_tips.html"
+                                });
+                            })
                         } else {
                             $("#tableBody").html('<tr><th colspan ="10"><center>查询无数据</center></th></tr>')
                         }
@@ -146,7 +163,7 @@ $(function () {
     //渲染完就执行
     $(function () {
         //生成底部分页栏
-        buildTable(3, 1, 10);//默认空白查全部
+        buildTable(2, 1, 10);//默认空白查全部
         //身份类型下拉框
         //创建结算规则
 

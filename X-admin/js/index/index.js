@@ -115,7 +115,25 @@ $(function () {
         })
     }
 
-    //1级菜单ajax
+    $(".mima").click(function () {
+
+        layer.open({
+            type:2,
+            title:"修改密码",
+            area: ['750px', '500px'],
+            maxmin: true,
+            closeBtn: false,
+            fixed: false,
+            shadeClose: true,
+            shade: 0.4,
+            content: "updPass.html",
+            end: function () {
+
+
+            }
+        });
+    })
+
 
 
 })

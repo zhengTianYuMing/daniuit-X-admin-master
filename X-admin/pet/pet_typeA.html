@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script rel="script" src="../js/bootstrap/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+
+<form>
+    <form class="container" enctype="multipart/form-data" method="post" id='formBox' name="form">
+        <input type="file" id="chooseImage" name="file">
+        <!-- 保存用户自定义的背景图片 -->
+        <img id="cropedBigImg" value='custom' alt="lorem ipsum dolor sit" data-address='' title="自定义背景"/>
+    </form>
+</form>
+
+</body>
+</html>
+<script type="text/javascript" rel="script">
+
+    $(function () {
+        $('#chooseImage').on('change',function(){
+            var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
+                fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
+                src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
+
+            // 检查是否是图片
+            if( !fileFormat.match(/.png|.jpg|.jpeg/) ) {
+                error_prompt_alert('上传错误,文件格式必须为：png/jpg/jpeg');
+                return;
+            }
+
+            $('#cropedBigImg').attr('src',src);
+        });
+    })
+
+
+</script>

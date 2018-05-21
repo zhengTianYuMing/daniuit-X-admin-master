@@ -55,7 +55,7 @@ $(function () {
                                 onPageChange: function (num, type) {
                                     if (type != "init") {
 
-                                        buildTable(2, num, PAGESIZE);
+                                        buildTable(1, num, PAGESIZE);
                                     }
                                 }
                             });
@@ -121,6 +121,7 @@ $(function () {
                                     content: "users_experience.html"
                                 });
                             })
+
                             //认证成功执行
                             $(".success").click(function () {
                                 var id = $(this).parent().attr("class");
@@ -162,7 +163,7 @@ $(function () {
     //渲染完就执行
     $(function () {
         //生成底部分页栏
-        buildTable(2, 1, 10);//默认空白查全部
+        buildTable(1, 1, 10);//默认空白查全部
         //身份类型下拉框
         //创建结算规则
 
@@ -221,7 +222,7 @@ $(function () {
             method:"post",
             contentType:"application/json",
             dataType:"json",
-            data:JSON.stringify({id:id,'isExamine': 3}),
+            data:JSON.stringify({id:id,'isExamine': 2}),
             success:function (data) {
                 if(data.code==200){
                     layer.alert(data.msg);

@@ -1,32 +1,31 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>用户表</title>
+    <title>Title</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="css/user/user_info.css">
-    <link rel="stylesheet" href="css/bootstrap/font.css">
-    <link rel="stylesheet" href="css/bootstrap/xadmin.css">
-    <script type="text/javascript" src="js/bootstrap/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="js/bootstrap/xadmin.js"></script>
-    <script type="text/javascript" src="lib/layui/layui.all.js" ></script>
-    <script rel="script" src="js/bootstrap/bootstrap.min.js"></script>
-    <script rel="script" src="js/bootstrap/bootstrap-paginator.js"></script>
-    <script rel="script" src="js/bootstrap/doT.min.js"></script>
-    <script rel="script" src="js/bootstrap/jquery.cookie.js"></script>
-    <script rel="script" src="js/user/user_info.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/user/user_info.css">
+    <link rel="stylesheet" href="../css/bootstrap/font.css">
+    <link rel="stylesheet" href="../css/bootstrap/xadmin.css">
+    <script type="text/javascript" src="../js/bootstrap/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/bootstrap/xadmin.js"></script>
+    <script type="text/javascript" src="../lib/layui/layui.all.js" ></script>
+    <script rel="script" src="../js/bootstrap/bootstrap.min.js"></script>
+    <script rel="script" src="../js/bootstrap/bootstrap-paginator.js"></script>
+    <script rel="script" src="../js/bootstrap/doT.min.js"></script>
+    <script rel="script" src="../js/bootstrap/jquery.cookie.js"></script>
+    <script rel="script" src="../js/pet/pet_info.js"></script>
 
-    <script rel="script" src="js/bootstrap/jqPaginator.js"></script>
+    <script rel="script" src="../js/bootstrap/jqPaginator.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
-    <script src="js/bootstrap/html5.min.js"></script>
-    <script src="js/bootstrap/respond.min.js"></script>
+    <script src="../js/bootstrap/html5.min.js"></script>
+    <script src="../js/bootstrap/respond.min.js"></script>
     <![endif]-->
 </head>
 
@@ -49,7 +48,7 @@
 
                 <div class="layui-inline">
                     <div class="layui-input-inline">
-                        <select name="modules" style="display: block;height: 36px" id="position" lay-search="">
+                        <select name="modules" id="position" lay-search="">
 
 
                         </select>
@@ -73,15 +72,14 @@
         <thead>
         <tr>
             <th>序号</th>
-            <th>用户编号</th>
-            <th>用户头像</th>
-            <th>用户姓名</th>
-            <th>手机号</th>
-            <th>用户身份</th>
-            <th>qq号</th>
-            <th>新浪微博</th>
+            <th>宠物姓名</th>
+            <th>宠物姓别</th>
+            <th>宠物图片</th>
+            <th>宠物种类</th>
+            <th>宠物类别</th>
+            <th>宠物生日</th>
+            <th>是否绝育</th>
             <th>状态</th>
-            <th>操作</th>
         </thead>
         <tbody id="tableBody">
 
@@ -106,5 +104,4 @@
     {{ } }}
 </script>
 </body>
-
 </html>
